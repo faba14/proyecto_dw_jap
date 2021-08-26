@@ -139,9 +139,10 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
-#formulario{
+#login{
   margin: auto;
   text-align: center;
   background-color: burlywood;
+  
   
 }
