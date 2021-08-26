@@ -142,7 +142,6 @@ a.custom-card:hover {
 #login{
   margin: auto;
   text-align: center;
-  background-color: burlywood;
-  
-  
+  background-color: lightgray;
+  border-radius: 10px; 
 }
