@@ -8,7 +8,8 @@ document.getElementById("submitBtn").addEventListener("click",function(){
     let a=document.getElementById("email");
     let b=document.getElementById("contraseña");
     if(a.value!="" && b.value!=""){
-     window.location = `inicio.html`;
+        localStorage.setItem(`user`,a.value);
+        window.location = `inicio.html`;
     }else{
         alert("Debe completar los campos");
     }
