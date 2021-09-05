@@ -14,6 +14,7 @@ var currentProductsArray = [];
 var currentSortCriteria = undefined;
 var minCount = undefined;
 var maxCount = undefined;
+let buscar = undefined;
 
 function sortProducts(criteria, array){
     let result = [];
@@ -69,7 +70,10 @@ function showProductsList(){
         let product = currentProductsArray[i];
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(product.soldCount) >= minCount)) &&
-            ((maxCount == undefined) || (maxCount != undefined && parseInt(product.soldCount) <= maxCount))){
+            ((maxCount == undefined) || (maxCount != undefined && parseInt(product.soldCount) <= maxCount)) &&
+            ((product.name.toLowerCase().includes(buscar)) || (buscar==undefined && buscar!=""))
+            
+            ){
 
             htmlContentToAppend += `
             <a href="products.html" class="list-group-item list-group-item-action">
@@ -169,4 +173,10 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         showProductsList();
     });
+    
+    document.getElementById("buscar").addEventListener(`input`,function(){
+        buscar=document.getElementById("buscar").value.toLowerCase();
+        showProductsList();
+    })
+
 });
