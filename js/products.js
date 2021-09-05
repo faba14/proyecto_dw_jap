@@ -71,7 +71,7 @@ function showProductsList(){
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(product.soldCount) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(product.soldCount) <= maxCount)) &&
-            ((product.name.toLowerCase().includes(buscar)) || (buscar==undefined && buscar!=""))
+            ( (product.name.toLowerCase().includes(buscar) ||product.description.toLowerCase().includes(buscar) ) || (buscar==undefined && buscar!="") )
             
             ){
 

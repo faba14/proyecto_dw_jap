@@ -5,6 +5,7 @@ var currentCategoriesArray = [];
 var currentSortCriteria = undefined;
 var minCount = undefined;
 var maxCount = undefined;
+let buscar = undefined;
 
 function sortCategories(criteria, array){
     let result = [];
@@ -42,7 +43,9 @@ function showCategoriesList(){
         let category = currentCategoriesArray[i];
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(category.productCount) >= minCount)) &&
-            ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))){
+            ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount)) &&
+            ( (category.name.toLowerCase().includes(buscar) || category.description.toLowerCase().includes(buscar) ) || (buscar==undefined && buscar!="") )
+            ){
 
             htmlContentToAppend += `
             <a href="category-info.html" class="list-group-item list-group-item-action">
@@ -133,4 +136,11 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         showCategoriesList();
     });
+
+    document.getElementById("buscar").addEventListener(`input`,function(){
+        buscar=document.getElementById("buscar").value.toLowerCase();
+        showCategoriesList();
+    })
+
+
 });
