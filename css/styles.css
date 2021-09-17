@@ -145,3 +145,10 @@ a.custom-card:hover {
   background-color: lightgray;
   border-radius: 10px; 
 }
+
+.checked {
+  color: orange;
+}
+#prod-container ,#coments-container{
+  margin: 10px;
+}

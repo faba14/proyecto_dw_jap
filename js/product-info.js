@@ -59,21 +59,7 @@ document.addEventListener("DOMContentLoaded", function(e){
  .then(getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj){
             if (resultObj.status === "ok"){
                comentsArray=resultObj.data;
-                let comentsCont="";
-                for(let i=0;i<comentsArray.length;i++){
-                    let coment=comentsArray[i];
-                    comentsCont+=`
-                    <hr>
-                             <div id="coment`+i+`">
-                                <p>Puntuación:`+estrellas(coment.score)+` </p>
-                                <p>`+coment.description+`</p>
-                                <h6>`+coment.user+` , `+coment.dateTime+` </h6>
-                            </div>
-                            <hr>
-                    `
-                
-                }
-                document.getElementById("coments-container").innerHTML+=comentsCont;
+               showComents();
             }
     })
         );
@@ -90,6 +76,34 @@ function estrellas(n){
         }
      }
      return stars;
-
 }
 
+function showComents(){
+    let comentsCont="";
+    for(let i=0;i<comentsArray.length;i++){
+        let coment=comentsArray[i];
+        comentsCont+=`
+        <hr>
+                 <div id="coment`+i+`">
+                    <p>Puntuación:`+estrellas(coment.score)+` </p>
+                    <p>`+coment.description+`</p>
+                    <h6>`+coment.user+` , `+coment.dateTime+` </h6>
+                </div>
+                <hr>
+        `
+    }
+    document.getElementById("coments-container").innerHTML=comentsCont;
+}
+
+function addComent(){
+    let newComent={};
+    newComent.description=document.getElementById("coment.description").value;
+    newComent.score=parseInt(document.getElementById("coment.score").value);
+    newComent.user=localStorage.getItem(`user`);
+    newComent.dateTime= ` ${new Date().getFullYear()}-${(new Date().getMonth() +1)}-${new Date().getDate()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()} `
+    comentsArray.push(newComent);
+    showComents();
+    document.getElementById("coment.description").value="";
+    document.getElementById("coment.score").value="";
+    
+}
