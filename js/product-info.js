@@ -9,7 +9,33 @@ document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCT_INFO_URL).then(function(resultObj){
             if (resultObj.status === "ok"){
                 product=resultObj.data;
-                let productCont="";
+                showProduct();
+            }
+        })
+ .then(getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj){
+            if (resultObj.status === "ok"){
+               comentsArray=resultObj.data;
+               showComents();
+            }
+    })
+        );
+
+});
+
+function estrellas(n){
+    let stars="";
+    for(let i=0;i<5;i++){
+        if(n>i){
+            stars+=`<span class="fa fa-star checked"></span>`
+        }else{
+            stars+=`<span class="fa fa-star"></span>`
+        }
+     }
+     return stars;
+}
+
+function showProduct(){
+    let productCont="";
     productCont+= `
     <div class="row">
                     <div class="col-3">
@@ -54,28 +80,6 @@ document.addEventListener("DOMContentLoaded", function(e){
             
     `;
     document.getElementById("prod-container").innerHTML = productCont;
-            }
-        })
- .then(getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj){
-            if (resultObj.status === "ok"){
-               comentsArray=resultObj.data;
-               showComents();
-            }
-    })
-        );
-
-});
-
-function estrellas(n){
-    let stars="";
-    for(let i=0;i<5;i++){
-        if(n>i){
-            stars+=`<span class="fa fa-star checked"></span>`
-        }else{
-            stars+=`<span class="fa fa-star"></span>`
-        }
-     }
-     return stars;
 }
 
 function showComents(){
