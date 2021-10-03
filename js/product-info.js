@@ -3,6 +3,7 @@
 //elementos HTML presentes.
 var product={};
 var comentsArray=[];
+var products=[];
 
 document.addEventListener("DOMContentLoaded", function(e){
 
@@ -18,9 +19,40 @@ document.addEventListener("DOMContentLoaded", function(e){
                showComents();
             }
     })
+    .then(getJSONData(PRODUCTS_URL).then(function (resultObj){
+        if (resultObj.status === "ok"){
+            products=resultObj.data;
+            showRelProducts();
+         }
+    }))
         );
 
 });
+
+function showRelProducts(){
+    let cont="";
+    let prod;
+    for( let i=0;i<products.length;i++){
+        if (i==product.relatedProducts[0] || i==product.relatedProducts[1]){
+            prod=products[i];
+            cont+=`
+           
+                <div class="col-2">
+                    <img src="` + prod.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
+                </div>
+                <div class="col">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h4 class="mb-1">`+ prod.name +`</h4>
+                        <small class="text-muted">Precio: ` + prod.cost + prod.currency+ ` </small>
+                    </div>
+                <p class="mb-1">` + prod.description + `</p>
+                </div>
+            
+            `
+        }
+    }
+    document.getElementById("relProdCont").innerHTML+=cont;
+}
 
 function estrellas(n){
     let stars="";
