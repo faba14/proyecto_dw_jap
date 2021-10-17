@@ -11,6 +11,7 @@
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
 
   <style>
     .bd-placeholder-img {
@@ -43,13 +44,94 @@
       <p id="usuario"  style="color:white; text-align: right;"> Bienvenida/o </p>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 17/10/2021) y Entrega 7 (Fecha de entrega: 14/11/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <div class="container  mt-1 mb-1 border  rounded">
+    <h4>Artículos <button class="btn btn-light" style="text-align: end;" type="button" data-toggle="collapse" data-target="#cart-container" aria-expanded="false" aria-controls="collapseExample">
+      -
+    </button></h4>
+    <div id="cart-container" class="collapse show">
     </div>
+  </div>
+  
+  
+  <div  class="container border rounded mt-1 mb-1">
+    <h4>Envio <button class="btn btn-light" style="text-align: end;" type="button" data-toggle="collapse" data-target="#envio" aria-expanded="false" aria-controls="collapseExample">
+      -
+    </button></h4>
+    
+    <div id="envio" class="collapse">
+      <br>
+      <label for="tipo-de-envio">Tipo de envio:</label>  <br>
+        <input type="radio" name="tipo-de-envio" value="15" checked onchange="total()"> Premium(2-5 dias,+15%) <br>
+        <input type="radio" name="tipo-de-envio" value="7" onchange="total()"> Express(5-8 dias,+7%) <br>
+        <input type="radio" name="tipo-de-envio" value="5" onchange="total()"> Standard(12-15 dias,+5%) <br>
+      <label for="pais">Seleccione un pais:</label> 
+          <select id="pais" name="pais"> /* desplega una lista para elegir*/ 
+                    <option value="argentina">Argentina</option>
+                    <option value="uruguay" selected>Uruguay</option>
+                    <option value="venezuela">Venezuela</option>
+                    <option value="brasil">Brasil</option>
+          </select>
+          <br>
+      <label for="ciudad">Ciudad:</label>
+      <select id="ciudad" name="ciudad"> /* desplega una lista para elegir*/ 
+        <option value="Montevideo" selected>Montevideo</option>
+        <option value="Canelones">Canelones</option>
+        <option value="San Jose">San Jose</option>
+        <option value="Flores">Flores</option>
+        <option value="Florida">Florida</option>
+        <option value="Rio Negro">Rio Negro</option>
+        <option value="Maldonado">Maldonado</option>
+        <option value="Cerro Largo">Cerro Largo</option>
+        <option value="Salto">Salto</option>
+        <option value="Paysandu">Paysandu</option>
+        <option value="Treinta y Tres">Treinta y Tres</option>
+        <option value="Rivera">Rivera</option>
+        <option value="Colonia">Colonia</option>
+        <option value="Rocha">Rocha</option>
+        <option value="Durazno">Durazno</option>
+        <option value="Soriano">Soriano</option>
+        <option value="Tacuarembo">Tacuarembo</option>
+        <option value="Lavalleja">Lavalleja</option>
+        <option value="Artigas">Artigas</option>
+      </select>
+      <br>
+      <label for="dir">Direccion:</label>
+      <form id="dir">
+        <label for="calle">Calle:</label>
+        <input type="text" id="calle"></input>
+        <label for="numero">Numero:</label>
+        <input type="text" id="numero"></input>
+        <label for="esquina">Esquina:</label>
+        <input type="text" id="esquina"></input>
+      </form>
+    </div>
+  </div>
+  <div  class="container border rounded mt-1 mb-1">
+    <h4>Total
+      <button class="btn btn-light" style="text-align: end;" type="button" data-toggle="collapse" data-target="#total" aria-expanded="false" aria-controls="collapseExample">
+        -
+      </button>
+    </h4>
+    <h2 id="total" class="collapse" onclick="total()">$</h2>
+  </div>
+  <div class="container border rounded  mt-1 mb-1 ">
+    <h4>Forma de pago
+      <button class="btn btn-light" style="text-align: end;" type="button" data-toggle="collapse" data-target="#forma-de-pago" aria-expanded="false" aria-controls="collapseExample">
+        -
+      </button>
+    </h4>
+    <fieldset class="color collapse" id="forma-de-pago">
+      <br>
+      <input type="radio" name="forma-de-pago" value="h"> Crédito <br>
+      <input type="radio" name="forma-de-pago" value="h"> Transferencia bancaria <br>
+  </fieldset>
+  </div>
+  <div class="row">
+    <div class="col-5"></div>
+    <div class="col-">
+      <button class="btn btn-primary" onclick="compra()">Comprar</button>
+    </div>
+    <div class="col-5"></div>
   </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">
