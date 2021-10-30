@@ -76,7 +76,7 @@ function showProductsList(){
             ){
 
             htmlContentToAppend += `
-            <div class="col-sm-6  p-2">
+            <div class="col-lg-6  p-2">
                 <a href="product-info.html" style="height:200px;" class="list-group-item list-group-item-action">
                     <div class="row">
                         <div class="col-3">
