@@ -60,5 +60,6 @@ document.addEventListener("DOMContentLoaded", function(e){
   document.getElementById("usuario").innerHTML+=cont;
   document.getElementById("cerrarSesion").addEventListener("click",function(){
     localStorage.removeItem(`user`);
+    localStorage.removeItem(`perfil`);
   })
   });

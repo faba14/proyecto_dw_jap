@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 });
 document.getElementById("submitBtn").addEventListener("click",function(){
-    let a=document.getElementById("email");
+    let a=document.getElementById("usuario");
     let b=document.getElementById("contraseña");
     if(a.value!="" && b.value!=""){
         localStorage.setItem(`user`,a.value);

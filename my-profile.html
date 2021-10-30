@@ -43,14 +43,30 @@
       <p id="usuario"  style="color:white; text-align: right;"> Bienvenida/o </p>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col border round m-2 ">
+        <form name="perfil"></form>
+        <label for="perfil" >Mi perfil</label>
+        <br>
+        <div class="row">
+         <p>Email: <input type="text" id="email" placeholder="email"></p> 
+        </div>
+        <div class="row">
+          <p>Nombre: <input type="text" id="nombre" placeholder="Nombre Completo"></p>
+        </div>
+        <div class="row">
+          <p>Edad: <input type="number" id="edad" value="16" min="16"></p>
+        </div>
+        <div class="row">
+          <p>Telefono: <input type="text" id="telefono" placeholder="telefono"></p>
+        </div>
+      <button class="btn btn-primary" onclick="guardar()">Guardar cambios</button>
     </div>
+    <div class="col-4"></div>
   </div>
+
   <footer class="text-muted bg-light">
     <div class="container">
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
