@@ -13,6 +13,7 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
 
+
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -44,6 +45,16 @@
       <p id="usuario"  style="color:white; text-align: right;"> Bienvenida/o </p>
     </div>
   </nav>
+  <!--
+    <div class="container p-5">
+    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
+      <h4 class="alert-heading">¡A trabajar! :)</h4>
+      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 17/10/2021) y Entrega 7 (Fecha de entrega: 14/11/2021).</p>
+      <hr>
+      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+    </div>
+  </div>
+  -->
   <div class="container  mt-1 mb-1 border  rounded">
     <h4>Artículos <button class="btn btn-light" style="text-align: end;" type="button" data-toggle="collapse" data-target="#cart-container" aria-expanded="false" aria-controls="collapseExample">
       -
@@ -116,15 +127,10 @@
   </div>
   <div class="container border rounded  mt-1 mb-1 ">
     <h4>Forma de pago
-      <button class="btn btn-light" style="text-align: end;" type="button" data-toggle="collapse" data-target="#forma-de-pago" aria-expanded="false" aria-controls="collapseExample">
+      <button class="btn btn-light" style="text-align: end;" type="button"  data-toggle="modal" data-target="#formaDePago">
         -
       </button>
     </h4>
-    <fieldset class="color collapse" id="forma-de-pago">
-      <br>
-      <input type="radio" name="forma-de-pago" value="h"> Crédito <br>
-      <input type="radio" name="forma-de-pago" value="h"> Transferencia bancaria <br>
-  </fieldset>
   </div>
   <div class="row">
     <div class="col-5"></div>
@@ -139,6 +145,43 @@
       <div></div>
       <div></div>
       <div></div>
+    </div>
+  </div>
+  <div class="modal fade" id="formaDePago" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Forma de pago</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="radio" name="forma-de-pago" value="credito" id="inputcredito" data-toggle="collapse" data-target="#credito" aria-expanded="false" aria-controls="collapseExample"> Crédito <br>
+          <div id="credito" class="collapse">
+            <form id="formCredit" novalidate class=" form-group ">
+              <label for="n°tarjeta">Numero de tarjeta:</label>
+              <input type="text" class="formCredito form-control" name="n°tarjeta" id="n°tarjeta">
+              <br>
+              <label for="codigo">Codigo de seguridad:</label>
+              <input type="text" name="codigo" class="formCredito form-control" id="codigo">
+              <br>
+              <label for="vencimiento">Vencimiento:</label>
+              <input type="text" name="vencimiento" id="vencimiento" class="formCredito form-control">
+            </form>
+          </div>
+          <input type="radio" name="forma-de-pago" value="transferencia" id="inputtransferencia" data-toggle="collapse" data-target="#transferencia" aria-expanded="false" aria-controls="collapseExample"> Transferencia bancaria <br>
+          <div id="transferencia" class="collapse">
+            <label for="n°cuenta">Numero de cuenta:</label>
+              <input type="text" name="n°cuenta" id="n°cuenta"> 
+          </div>
+          <div class="row m-3 p-1 g-3" id="feedback" style="color: red;"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" onclick="guardar()" >Guardar</button>
+        </div>
+      </div>
     </div>
   </div>
   <script src="js/jquery-3.4.1.min.js"></script>

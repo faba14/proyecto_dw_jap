@@ -4,6 +4,7 @@
 const CART_2_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/654.json";
 var cart=[];
 var subtotales=[];
+let bandera=false;
 
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(CART_2_INFO_URL).then(function(resultObj){
@@ -91,6 +92,65 @@ function total(){
 }
 
 function compra(){
-    alert("Compra realizada con exito");
+    let flag=document.getElementById("calle").value!="" &&
+    document.getElementById("numero").value!="" &&
+    document.getElementById("esquina").value!="" ;
+    if(flag&&bandera){
+        alert("Compra realizada con exito");
     window.location=`products.html`;
+    }else{
+        if(!flag){
+            alert("Debe completar los campos de envio para continuar");
+        };
+        if(!bandera){
+            alert("Debe completar la forma de pago para continuar")
+        };        
+    }
+    
+}
+
+function guardar(){
+    let forma;
+    let flag;
+    let values=document.getElementsByName("forma-de-pago");
+    for(let i=0;i<values.length;i++){
+        if(values[i].checked){
+            flag=true;
+        }
+    }
+    if(flag){
+        for(let i=0;i<values.length;i++){
+            if(values[i].checked){
+                forma=values[i].value;
+            }
+        }
+        if(forma=="credito"){
+           flag=document.getElementById("n°tarjeta").value!="" &&
+            document.getElementById("codigo").value!="" &&
+            document.getElementById("vencimiento").value!="" ;
+            if(!flag){
+                    document.getElementById("feedback").innerHTML=`Debe completar todos los campos para proseguir`;
+                }else{
+                    bandera=true;
+                    document.getElementById("feedback").innerHTML="";
+                    alert("Su forma de pago ha sido guardada con exito")
+                };
+        }else if(forma=="transferencia"){
+            if(document.getElementById("n°cuenta").value==""){
+                document.getElementById("feedback").innerHTML=`Debe completar el campo para proseguir`;
+            }else{
+                bandera=true;
+                document.getElementById("feedback").innerHTML="";
+                alert("Su forma de pago ha sido guardada con exito")
+            };
+        };
+       /* document.getElementById("formaDePago").setAttribute( "style","display:none;");
+        document.getElementById("formaDePago").setAttribute( "class","modal fade");
+        document.getElementById("formaDePago").setAttribute( "area hidden","true");
+        document.getElementById("formaDePago").setAttribute( "area modal","");*/
+        
+    }else{
+        document.getElementById("feedback").innerHTML=`Debe seleccionar un metodo de pago`;
+    };
+    
 }
